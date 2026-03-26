@@ -1,0 +1,13 @@
+services:
+    app:
+        container_name: konkan-railway_api_v2
+        image: img_konkan-railway_api_v2
+        restart: on-failure:3
+        build:
+            context: .
+            dockerfile: Dockerfile
+            target: base
+        ports:
+            - "${OUTER_PORT}:${INNER_PORT}"
+        security_opt: 
+            - seccomp=chrome.json
